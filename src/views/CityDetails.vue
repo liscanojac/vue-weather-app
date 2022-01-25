@@ -7,6 +7,7 @@
 import axios from "axios";
 import Navbar from '@/components/Navbar.vue'
 import Details from '@/components/Details.vue'
+const { VUE_APP_API_KEY } = process.env;
 
 export default {
   name: 'CityDetails',
@@ -27,8 +28,7 @@ export default {
   },
   methods: {
     async getCity() {
-      let apiKey = 'feef74124242b3262f506f493093eb32';
-    await axios(`http://api.openweathermap.org/data/2.5/weather?id=${this.id}&appid=${apiKey}&units=metric`)
+    await axios(`http://api.openweathermap.org/data/2.5/weather?id=${this.id}&appid=${VUE_APP_API_KEY}&units=metric`)
       .then((json) => {
         return json.data;
       })
